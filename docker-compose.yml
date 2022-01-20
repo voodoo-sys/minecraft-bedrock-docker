@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  minecraft-bedrock:
+    image: minecraft-bedrock:latest
+    container_name: minecraft-bedrock
+    volumes:
+      - type: volume
+        source: minecraft-bedrock-worlds
+        target: /srv/minecraft-bedrock/worlds
+    env_file:
+      - minecraft-bedrock.env
+    network_mode: "host"
+    restart: unless-stopped
+
+volumes:
+  minecraft-bedrock-worlds:
